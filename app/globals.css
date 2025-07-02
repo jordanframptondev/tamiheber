@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #eae9e1;
+}
+
+@keyframes fadeInBackground {
+  from {
+    opacity: 0.33;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-background {
+  animation: fadeInBackground 1.5s ease-in-out;
+}
+
+.fade-in-div {
+  animation: fadeInDiv 2s ease-in-out;
+}
+
+@keyframes fadeInDiv {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.lightboxImage {
+  width: auto;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}

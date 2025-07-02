@@ -1,0 +1,41 @@
+.hamburger-icon {
+    width: 35px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .hamburger-icon {
+        width: 30px;
+    }
+}
+
+.hamburger-icon .line {
+    /* background-color: #000; */ /* Set with tailwind in component to match */
+    height: 1px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger-icon .line1 {
+    top: 0;
+}
+
+.hamburger-icon .line2 {
+    top: 8px;
+}
+
+.hamburger-icon.open .line1 {
+    transform: rotate(45deg);
+    top: 13px;
+}
+
+.hamburger-icon.open .line2 {
+    transform: rotate(-45deg);
+    top: 13px;
+}
