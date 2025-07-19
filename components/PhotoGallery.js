@@ -118,7 +118,7 @@ export function PhotoGallery({ photos }) {
                 return (
                   <div
                     key={photo.id || photoIndex}
-                    className={`relative cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group rounded ${consistentHeight}`}
+                    className={`relative cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group ${consistentHeight}`}
                     role="button"
                     tabIndex={0}
                     aria-label={`Open ${photo.alt || `Photo ${actualIndex + 1}`} in lightbox`}
@@ -129,7 +129,7 @@ export function PhotoGallery({ photos }) {
                       src={photo.src}
                       alt={photo.alt || `Photo ${actualIndex + 1}`}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105 rounded"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />

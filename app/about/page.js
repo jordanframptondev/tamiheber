@@ -19,11 +19,11 @@ export default async function About() {
             <div className="h-16 lg:h-24 flex-shrink-0"></div>
 
             {/* Content area */}
-            <div className="flex mt-12 lg:mt-20">
+            <div className="flex mt-8">
                 <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
 
                     {/* Title Section */}
-                    <div className="mb-8 lg:mb-12">
+                    <div className="mb-6 lg:mb-8">
                         <div className="space-y-4">
                             <h1 className="text-3xl font-montserrat font-extralight tracking-wide text-gray-900">
                                 About
@@ -33,7 +33,7 @@ export default async function About() {
                     </div>
 
                     {/* Content Section - Paragraph and Image Side by Side */}
-                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 pb-12 lg:pb-18">
 
                         {/* Text Content - Left Side */}
                         <div className="flex-1 order-2 lg:order-1">
@@ -47,13 +47,13 @@ export default async function About() {
 
                         {/* Image - Right Side */}
                         <div className="hidden lg:block lg:w-1/2 order-1 lg:order-2">
-                            <div className="relative w-full max-h-[700px] overflow-hidden rounded">
+                            <div className="relative w-full max-h-[700px] overflow-hidden">
                                 <Image
                                     src={imageUrl}
                                     alt="Tami Heber"
                                     width={1000}
                                     height={700}
-                                    className="object-cover w-full h-[700px]"
+                                    className="object-cover w-full h-[600px]"
                                     sizes="50vw"
                                     priority={true}
                                 />
