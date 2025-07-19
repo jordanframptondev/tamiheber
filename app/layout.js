@@ -33,7 +33,7 @@ export default function RootLayout({children}) {
     return (
         <html lang="en"
               className={`${montserrat.variable} ${robotoCondensed.variable} ${novecento.variable} ${barlowCondensed.variable}`}>
-        <body className={"font-barlowCondensed"}>
+        <body className={"font-montserrat"}>
         <Header/>
         {children}
         </body>

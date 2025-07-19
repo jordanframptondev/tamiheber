@@ -9,7 +9,7 @@ export function FadingPhotoGallery({imageURLs}) {
     const [loadTimes, setLoadTimes] = useState({});
     const [loadedCount, setLoadedCount] = useState(0);
     const [firstImageLoaded, setFirstImageLoaded] = useState(false);
-    const numberOfImages = imageURLs.length;
+    const numberOfImages = imageURLs?.length;
 
     useEffect(() => {
         if (loadedCount === numberOfImages && numberOfImages > 0) {
@@ -19,7 +19,7 @@ export function FadingPhotoGallery({imageURLs}) {
 
             return () => clearInterval(interval);
         }
-    }, [loadedCount, imageURLs.length, numberOfImages]);
+    }, [loadedCount, imageURLs?.length, numberOfImages]);
 
     function handleImageLoad(index, startTime) {
         const loadTime = Date.now() - startTime;

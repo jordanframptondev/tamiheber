@@ -1,5 +1,6 @@
-import {getHomeImages} from "@/utils/cms-service";
-import {FadingPhotoGallery} from "@/components/FadingPhotoGallery";
+import { getHomeImages } from "@/lib/cms-service";
+import { FadingPhotoGallery } from "@/components/FadingPhotoGallery";
+import { FullScreenVideo } from "@/components/FullScreenVideo";
 
 export const metadata = {
     title: 'Clearstone Builders - Home',
@@ -9,6 +10,6 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const cmsImages = await getHomeImages();
-  return <FadingPhotoGallery imageURLs={cmsImages} />;
+    // TODO: get video from CMS
+    return <FullScreenVideo posterImage="/video-thumbnail.png"/>
 }
