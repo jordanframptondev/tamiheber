@@ -49,7 +49,7 @@ export default async function Contact() {
                     <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row h-full">
 
                         {/* Contact Content - Left Side */}
-                        <div className="flex-1 lg:pr-12 xl:pr-16 flex flex-col py-8 lg:py-0 order-2 lg:order-1">
+                        <div className="flex-1 lg:pr-12 xl:pr-16 flex flex-col py-8 lg:py-0">
                             <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300">
                                 <div className="space-y-8 py-4">
                                     <div className="space-y-6">
