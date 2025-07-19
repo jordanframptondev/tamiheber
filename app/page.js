@@ -3,9 +3,9 @@ import { FadingPhotoGallery } from "@/components/FadingPhotoGallery";
 import { FullScreenVideo } from "@/components/FullScreenVideo";
 
 export const metadata = {
-    title: 'Clearstone Builders - Home',
-    description: 'Home page displaying beautiful home images',
-    keywords: 'home, website, clearstone builders, clearstone, builders, homes',
+    title: 'Tami Heber',
+    description: 'Tami Heber - Custom Home Contractor',
+    keywords: 'Tami Heber, independent contractor, general contractor, custom home builder, home construction, residential construction, renovation, remodeling, architectural design, interior design, design build, project management, craftsmanship, building contractor',
     viewport: 'width=device-width, initial-scale=1',
 };
 
