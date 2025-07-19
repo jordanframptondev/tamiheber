@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import { useWindowSize } from '../app/hooks/useWindowSize';
 
 function getColumns(width) {
@@ -10,12 +10,31 @@ function getColumns(width) {
   return 1;
 }
 
+// Generate consistent heights based on photo index for deterministic layout
+function generateConsistentHeights(photoCount) {
+  const heights = [
+    'h-64', 'h-72', 'h-80', 'h-96', 'h-[28rem]', 'h-[32rem]',
+    'h-[36rem]', 'h-[40rem]', 'h-[44rem]', 'h-[20rem]', 'h-[24rem]'
+  ];
+
+  // Use a simple hash function based on index for consistent results
+  return Array.from({ length: photoCount }, (_, index) => {
+    // Simple deterministic "random" based on index
+    const seed = (index * 2654435761) % 2147483647; // Use large prime for better distribution
+    const heightIndex = seed % heights.length;
+    return heights[heightIndex];
+  });
+}
+
 export function PhotoGallery({ photos }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const { width } = useWindowSize();
   const [columns, setColumns] = useState(getColumns(width));
   const [isClient, setIsClient] = useState(false);
   
+  // Generate consistent heights once and memoize them
+  const consistentHeights = useMemo(() => generateConsistentHeights(photos?.length || 0), [photos?.length]);
+
   useEffect(() => {
     setColumns(getColumns(width));
   }, [width]);
@@ -94,11 +113,12 @@ export function PhotoGallery({ photos }) {
               {columnPhotos.map((photo, photoIndex) => {
                 // Calculate the actual index in the original photos array
                 const actualIndex = photos.findIndex(p => p === photo);
+                const consistentHeight = consistentHeights[actualIndex] || 'h-80';
 
                 return (
                   <div
                     key={photo.id || photoIndex}
-                    className="relative cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group"
+                    className={`relative cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group rounded ${consistentHeight}`}
                     role="button"
                     tabIndex={0}
                     aria-label={`Open ${photo.alt || `Photo ${actualIndex + 1}`} in lightbox`}
@@ -108,16 +128,11 @@ export function PhotoGallery({ photos }) {
                     <Image
                       src={photo.src}
                       alt={photo.alt || `Photo ${actualIndex + 1}`}
-                      width={photo.width || 1000}
-                      height={photo.height || 1000}
-                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105 rounded-lg"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105 rounded"
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    </div>
                   </div>
                 );
               })}
@@ -176,7 +191,7 @@ export function PhotoGallery({ photos }) {
               alt={selectedImage.alt}
               width={selectedImage.width}
               height={selectedImage.height}
-              className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg"
+              className="max-h-[90vh] max-w-[90vw] object-contain"
               priority
             />
           </div>

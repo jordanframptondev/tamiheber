@@ -20,12 +20,12 @@ export function Header() {
 
     // Determine if we're on a dark background page (home) or light background page
     const isDarkBackground = pathname === '/';
-    const textColor = isDarkBackground ? 'text-white' : 'text-gray-900';
-    const hoverColor = isDarkBackground ? 'hover:text-white/80' : 'hover:text-gray-600';
-    const activeColor = isDarkBackground ? 'text-white/80' : 'text-gray-600';
-    const underlineColor = isDarkBackground ? 'bg-white' : 'bg-gray-900';
-    const headerBg = isDarkBackground ? 'bg-white/10' : 'bg-white/90';
-    const borderColor = isDarkBackground ? 'border-white/10' : 'border-gray-200/50';
+    const textColor = isDarkBackground ? 'text-black' : 'text-gray-900';
+    const hoverColor = isDarkBackground ? 'hover:text-black/80' : 'hover:text-gray-600';
+    const activeColor = isDarkBackground ? 'text-black/80' : 'text-gray-600';
+    const underlineColor = isDarkBackground ? 'bg-black' : 'bg-gray-900';
+    const headerBg = isDarkBackground ? 'bg-white/90' : 'bg-white/90';
+    const borderColor = isDarkBackground ? 'border-gray-200/50' : 'border-gray-200/50';
 
     const handleClickOutside = (event) => {
         if (hamburgerRef.current && !hamburgerRef.current.contains(event.target) &&
