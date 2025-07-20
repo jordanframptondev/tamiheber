@@ -28,22 +28,11 @@ export default async function Contact() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Background Image */}
-            <div className="fixed top-0 left-0 w-full h-full -z-10">
-                <Image
-                    src={imageUrl}
-                    alt="Background Image"
-                    fill
-                    priority={true}
-                    className="object-cover opacity-20"
-                />
-            </div>
-
             {/* Header spacing */}
             <div className="h-16 lg:h-24 flex-shrink-0"></div>
 
             {/* Content area */}
-            <div className="h-[calc(100vh-4rem)] lg:h-[calc(100vh-6rem)] flex mt-8">
+            <div className="h-[calc(100dvh-4rem)] lg:h-[calc(100dvh-6rem)] flex mt-8">
                 <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
 
                     {/* Title Section */}
@@ -64,19 +53,24 @@ export default async function Contact() {
                             <div className="space-y-6">
                                 {/* Email Card */}
                                 <div className="group relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform -skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-                                    <div className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                    <div
+                                        className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform -skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
+                                    <div
+                                        className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                         <div className="flex items-center space-x-4">
-                                            <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                            <div
+                                                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                                     viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-xs font-montserrat font-light text-gray-500 uppercase tracking-wider mb-1">Email</p>
                                                 <a
                                                     href={`mailto:${email}`}
-                                                    className="text-sm lg:text-lg font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 uppercase tracking-wider break-all"
+                                                    className="text-sm lg:text-base font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 uppercase tracking-wider break-all"
                                                 >
                                                     {email}
                                                 </a>
@@ -87,19 +81,24 @@ export default async function Contact() {
 
                                 {/* Phone Card */}
                                 <div className="group relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-                                    <div className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                    <div
+                                        className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
+                                    <div
+                                        className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                         <div className="flex items-center space-x-4">
-                                            <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                            <div
+                                                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                                     viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                                 </svg>
                                             </div>
                                             <div className="flex-1">
                                                 <p className="text-xs font-montserrat font-light text-gray-500 uppercase tracking-wider mb-1">Phone</p>
                                                 <a
                                                     href={`tel:${phone}`}
-                                                    className="text-sm lg:text-lg font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 tracking-wider"
+                                                    className="text-sm lg:text-base font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 tracking-wider"
                                                 >
                                                     {formattedPhone}
                                                 </a>

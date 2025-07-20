@@ -14,7 +14,7 @@ export default async function About() {
     const textHtml = toHTML(text).replace(/<br\s*\/?>/gi, " ");
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-dvh bg-gray-50">
             {/* Header spacing */}
             <div className="h-16 lg:h-24 flex-shrink-0"></div>
 

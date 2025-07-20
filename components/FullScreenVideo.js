@@ -158,7 +158,7 @@ export function FullScreenVideo({ posterImage = null }) {
 
   return (
     <div
-      className="relative w-full h-screen overflow-hidden bg-black"
+      className="relative w-full h-dvh overflow-hidden bg-black"
       onMouseMove={handleMouseMove}
       onTouchStart={resetControlsTimeout}
     >
@@ -187,13 +187,6 @@ export function FullScreenVideo({ posterImage = null }) {
             sizes="100vw"
             quality={85}
           />
-        </div>
-      )}
-
-      {/* Loading indicator */}
-      {isLoading && !showPoster && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-          <div className="text-white text-lg md:text-xl">Loading...</div>
         </div>
       )}
 

@@ -101,7 +101,7 @@ export function PhotoGallery({ photos }) {
   const selectedImage = selectedImageIndex !== null ? photos[selectedImageIndex] : null;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-dvh bg-white">
       {/* Header spacing */}
       <div className="h-16 lg:h-24 flex-shrink-0"></div>
 
@@ -118,7 +118,7 @@ export function PhotoGallery({ photos }) {
                 return (
                   <div
                     key={photo.id || photoIndex}
-                    className={`relative cursor-pointer overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group ${consistentHeight}`}
+                    className={`relative cursor-pointer overflow-hidden transition-all duration-300 group ${consistentHeight}`}
                     role="button"
                     tabIndex={0}
                     aria-label={`Open ${photo.alt || `Photo ${actualIndex + 1}`} in lightbox`}

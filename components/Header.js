@@ -18,14 +18,13 @@ export function Header() {
     const mobileMenuRef = useRef(null);
     const hamburgerRef = useRef(null);
 
-    // Determine if we're on a dark background page (home) or light background page
-    const isDarkBackground = pathname === '/';
-    const textColor = isDarkBackground ? 'text-black' : 'text-gray-900';
-    const hoverColor = isDarkBackground ? 'hover:text-black/80' : 'hover:text-gray-600';
-    const activeColor = isDarkBackground ? 'text-black/80' : 'text-gray-600';
-    const underlineColor = isDarkBackground ? 'bg-black' : 'bg-gray-900';
-    const headerBg = isDarkBackground ? 'bg-white/90' : 'bg-white/90';
-    const borderColor = isDarkBackground ? 'border-gray-200/50' : 'border-gray-200/50';
+    // Make header styling consistent across all pages
+    const textColor = 'text-black';
+    const hoverColor = 'hover:text-black/80';
+    const activeColor = 'text-black/80';
+    const underlineColor = 'bg-black';
+    const headerBg = 'bg-white/90';
+    const borderColor = 'border-gray-200/50';
 
     const handleClickOutside = (event) => {
         if (hamburgerRef.current && !hamburgerRef.current.contains(event.target) &&
@@ -81,7 +80,7 @@ export function Header() {
                             onClick={toggleMobileMenu}
                             className="md:hidden cursor-pointer p-2"
                         >
-                            <AnimatedHamburger open={mobileMenuOpen} isDark={!isDarkBackground}/>
+                            <AnimatedHamburger open={mobileMenuOpen} isDark={true}/>
                         </div>
                     </div>
                 </div>
@@ -90,7 +89,7 @@ export function Header() {
             {/* Mobile Menu Overlay */}
             <div
                 ref={mobileMenuRef}
-                className={`fixed top-0 left-0 w-full h-full ${isDarkBackground ? 'bg-white/5' : 'bg-black/90'} backdrop-blur-xl z-40 transition-all duration-700 ease-out md:hidden ${
+                className={`fixed top-0 left-0 w-full h-full bg-black/90 backdrop-blur-xl z-40 transition-all duration-700 ease-out md:hidden ${
                     mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                 }`}
             >
@@ -99,8 +98,8 @@ export function Header() {
                         <Link
                             key={item.path}
                             href={item.path}
-                            className={`${isDarkBackground ? 'text-white hover:text-white/80' : 'text-white hover:text-white/80'} font-montserrat font-extralight text-lg tracking-widest uppercase relative group transition-all duration-500 ${
-                                pathname === item.path ? (isDarkBackground ? 'text-white/80' : 'text-white/80') : ''
+                            className={`text-white hover:text-white/80 font-montserrat font-extralight text-lg tracking-widest uppercase relative group transition-all duration-500 ${
+                                pathname === item.path ? 'text-white/80' : ''
                             }`}
                             style={{
                                 animationDelay: mobileMenuOpen ? `${index * 100}ms` : '0ms'
