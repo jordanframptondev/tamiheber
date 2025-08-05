@@ -10,6 +10,7 @@ export function FullScreenVideo({ posterImage = null }) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasPlayed, setHasPlayed] = useState(false);
   const [showPoster, setShowPoster] = useState(true);
+  const [shouldRenderPoster, setShouldRenderPoster] = useState(true);
   const [isLooping, setIsLooping] = useState(false);
   const videoRef = useRef(null);
   const controlsTimeoutRef = useRef(null);
@@ -49,12 +50,21 @@ export function FullScreenVideo({ posterImage = null }) {
     resetControlsTimeout();
   };
 
+  // Hide poster with transition
+  const hidePoster = () => {
+    setShowPoster(false);
+    // Remove from DOM after transition completes (1000ms duration)
+    setTimeout(() => {
+      setShouldRenderPoster(false);
+    }, 1000);
+  };
+
   // Auto-play when video is loaded
   const attemptAutoplay = async () => {
     if (videoRef.current && !hasPlayed) {
       try {
         setIsLoading(false);
-        setShowPoster(false); // Hide poster when video starts
+        hidePoster(); // Use new function to hide poster with proper transition
         await videoRef.current.play();
         setHasPlayed(true);
         setIsPlaying(true);
@@ -74,7 +84,7 @@ export function FullScreenVideo({ posterImage = null }) {
     const handlePlay = () => {
       setIsPlaying(true);
       setIsLoading(false);
-      setShowPoster(false); // Hide poster when video plays
+      hidePoster(); // Use new function to hide poster with proper transition
       setIsLooping(false); // Clear looping state when playing
     };
     const handlePause = () => setIsPlaying(false);
@@ -106,7 +116,7 @@ export function FullScreenVideo({ posterImage = null }) {
     const handlePlaying = () => {
       setIsLoading(false);
       setIsPlaying(true);
-      setShowPoster(false); // Hide poster when video is playing
+      hidePoster(); // Use new function to hide poster with proper transition
       setIsLooping(false); // Clear looping state when playing
     };
 
@@ -176,8 +186,10 @@ export function FullScreenVideo({ posterImage = null }) {
       </video>
 
       {/* Custom Poster/Thumbnail Image with Next.js Image optimization */}
-      {showPoster && posterImage && (
-        <div className="absolute inset-0 z-5">
+      {shouldRenderPoster && posterImage && (
+        <div className={`absolute inset-0 z-5 transition-opacity duration-1000 ${
+            showPoster ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}>
           <Image
             src={posterImage}
             alt="Video thumbnail"
@@ -192,7 +204,7 @@ export function FullScreenVideo({ posterImage = null }) {
 
       {/* Bottom Controls */}
       <div
-        className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent transition-opacity duration-300 ${
+        className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent transition-opacity duration-1000 ${
           showControls ? 'opacity-100' : 'opacity-0'
         }`}
       >
