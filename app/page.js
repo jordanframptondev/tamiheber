@@ -11,5 +11,5 @@ export const metadata = {
 
 export default async function Home() {
     // TODO: get video from CMS
-    return <FullScreenVideo posterImage="/video-thumbnail.png"/>
+    return <FullScreenVideo posterImage="/thumbnail.jpg"/>
 }
