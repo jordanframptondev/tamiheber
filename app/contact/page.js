@@ -1,5 +1,6 @@
 import { getContactData } from "@/lib/cms-service";
 import Image from "next/image";
+import ContactCard from "@/components/ContactCard";
 
 export const metadata = {
     title: "Tami Heber - Contact",
@@ -23,8 +24,6 @@ export default async function Contact() {
         // Return original if not 10 digits
         return phoneNumber;
     };
-
-    const formattedPhone = formatPhoneNumber(phone);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -51,61 +50,49 @@ export default async function Contact() {
                         {/* Contact Content - Left Side */}
                         <div className="flex-1 order-2 lg:order-1">
                             <div className="space-y-6">
-                                {/* Email Card */}
-                                <div className="group relative overflow-hidden">
-                                    <div
-                                        className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform -skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-                                    <div
-                                        className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                        <div className="flex items-center space-x-4">
-                                            <div
-                                                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                                </svg>
-                                            </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs font-montserrat font-light text-gray-500 uppercase tracking-wider mb-1">Email</p>
-                                                <a
-                                                    href={`mailto:${email}`}
-                                                    className="text-sm lg:text-base font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 uppercase tracking-wider break-all"
-                                                >
-                                                    {email}
-                                                </a>
-                                            </div>
-                                        </div>
+                                {/* Copy Text */}
+                                <div className="relative bg-transparent">
+                                    <div className="space-y-4">
+                                        <p className="text-lg lg:text-xl font-montserrat font-light text-gray-800 leading-relaxed tracking-wide italic">
+                                            Looking for more information or want to discuss your project?
+                                        </p>
+                                        <p className="text-base lg:text-lg font-montserrat font-extralight text-gray-600 leading-relaxed tracking-wide">
+                                            Send me a message—I&apos;m happy to answer any questions and will get back
+                                            to you as soon as I can.
+                                        </p>
                                     </div>
                                 </div>
 
+                                {/* Email Card */}
+                                {email &&
+                                    <ContactCard
+                                        type="email"
+                                        value={email}
+                                        icon={
+                                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                                 viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                            </svg>
+                                        }
+                                    />
+                                }
+
                                 {/* Phone Card */}
-                                <div className="group relative overflow-hidden">
-                                    <div
-                                        className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-                                    <div
-                                        className="relative p-6 border border-gray-200 rounded bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                        <div className="flex items-center space-x-4">
-                                            <div
-                                                className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                                </svg>
-                                            </div>
-                                            <div className="flex-1">
-                                                <p className="text-xs font-montserrat font-light text-gray-500 uppercase tracking-wider mb-1">Phone</p>
-                                                <a
-                                                    href={`tel:${phone}`}
-                                                    className="text-sm lg:text-base font-montserrat font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 tracking-wider"
-                                                >
-                                                    {formattedPhone}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {phone &&
+                                    <ContactCard
+                                        type="phone"
+                                        value={phone}
+                                        formatValue={formatPhoneNumber}
+                                        icon={
+                                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                                 viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                            </svg>
+                                        }
+                                    />
+                                }
                             </div>
                         </div>
 
