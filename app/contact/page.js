@@ -53,7 +53,7 @@ export default async function Contact() {
                                 {/* Copy Text */}
                                 <div className="relative bg-transparent">
                                     <div className="space-y-4">
-                                        <p className="text-lg lg:text-xl font-montserrat font-light text-gray-800 leading-relaxed tracking-wide italic">
+                                        <p className="text-lg lg:text-xl font-montserrat font-light text-gray-800 leading-relaxed tracking-wide">
                                             Looking for more information or want to discuss your project?
                                         </p>
                                         <p className="text-base lg:text-lg font-montserrat font-extralight text-gray-600 leading-relaxed tracking-wide">
