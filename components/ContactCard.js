@@ -22,10 +22,10 @@ export default function ContactCard({ type, value, icon, formatValue }) {
 
     return (
         <div className="group relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform -skew-y-1 group-hover:skew-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-            <div className="relative px-3 py-6 sm:px-6 border border-gray-200 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-50 transform -skew-y-1 transition-transform duration-500 opacity-0"></div>
+            <div className="relative px-3 py-6 sm:px-6 border border-gray-950 bg-white backdrop-blur-sm  transition-all duration-300">
                 <div className="flex items-center">
-                    <div className="w-9 h-9 sm:w-12 sm:h-12 bg-gray-900 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 bg-gray-900 rounded-full flex items-center justify-center transition-transform duration-300">
                         {icon}
                     </div>
                     <div className="flex-1 ml-3 sm:ml-4 min-w-0">
