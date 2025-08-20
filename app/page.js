@@ -1,5 +1,3 @@
-import { getHomeImages } from "@/lib/cms-service";
-import { FadingPhotoGallery } from "@/components/FadingPhotoGallery";
 import { FullScreenVideo } from "@/components/FullScreenVideo";
 
 export const metadata = {
@@ -10,6 +8,5 @@ export const metadata = {
 };
 
 export default async function Home() {
-    // TODO: get video from CMS
-    return <FullScreenVideo posterImage="/thumbnail.jpg"/>
+    return <FullScreenVideo posterImage="/thumbnail.jpg"/>;
 }
