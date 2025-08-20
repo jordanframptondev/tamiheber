@@ -6,6 +6,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'message',
+      title: 'Message',
+      type: 'array',
+      of: [{ type: 'block' }],
+      description: 'Intro / instructions shown on contact page'
+    }),
+    defineField({
       name: 'email',
       title: 'Email',
       type: 'string',
@@ -31,10 +38,7 @@ export default defineType({
       phoneNumber: 'phoneNumber',
     },
     prepare(selection) {
-      const {email, phoneNumber} = selection
-      return {
-        title: `Contact`,
-      }
+      return { title: 'Contact' }
     },
   },
 })

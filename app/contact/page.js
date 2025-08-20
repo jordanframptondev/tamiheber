@@ -1,6 +1,7 @@
 import { getContactData } from "@/lib/cms-service";
 import Image from "next/image";
 import ContactCard from "@/components/ContactCard";
+import { toHTML } from "@portabletext/to-html";
 
 export const metadata = {
     title: "Tami Heber - Contact",
@@ -10,7 +11,15 @@ export const metadata = {
 };
 
 export default async function Contact() {
-    const {email, phone, imageUrl} = await getContactData();
+    const {email, phone, imageUrl, message} = await getContactData();
+
+    // Build rich text HTML (fallback to default copy if none set in CMS)
+    let messageHtml = '';
+    if (message && message.length > 0) {
+        messageHtml = toHTML(message).replace(/<br\s*\/?>/gi, ' ');
+    } else {
+        messageHtml = `<p>Looking for more information or want to discuss your project?</p><p>Send me a message—I'm happy to answer any questions and will get back to you as soon as I can.</p>`;
+    }
 
     // Format phone number as (xxx) xxx-xxxx
     const formatPhoneNumber = (phoneNumber) => {
@@ -52,14 +61,11 @@ export default async function Contact() {
                             <div className="space-y-6">
                                 {/* Copy Text */}
                                 <div className="relative bg-transparent">
-                                    <div className="space-y-4">
-                                        <p className="text-lg lg:text-xl font-montserrat font-light text-gray-800 leading-relaxed tracking-wide">
-                                            Looking for more information or want to discuss your project?
-                                        </p>
-                                        <p className="text-base lg:text-lg font-montserrat font-extralight text-gray-600 leading-relaxed tracking-wide">
-                                            Send me a message—I&apos;m happy to answer any questions and will get back
-                                            to you as soon as I can.
-                                        </p>
+                                    <div className="prose prose-lg max-w-none">
+                                        <div
+                                            className="text-gray-700 font-montserrat font-light text-xl [&>p]:mb-4 [&>p:first-child]:font-normal [&>p:last-child]:mb-0"
+                                            dangerouslySetInnerHTML={{__html: messageHtml}}
+                                        />
                                     </div>
                                 </div>
 
@@ -105,14 +111,16 @@ export default async function Contact() {
                         {/* Image - Right Side */}
                         <div className="hidden lg:block lg:w-1/2 order-1 lg:order-2">
                             <div className="relative w-full h-[400px] overflow-hidden">
-                                <Image
-                                    src={imageUrl}
-                                    alt="Contact Image"
-                                    fill
-                                    className="object-cover"
-                                    sizes="50vw"
-                                    priority={true}
-                                />
+                                {imageUrl && (
+                                    <Image
+                                        src={imageUrl}
+                                        alt="Contact Image"
+                                        fill
+                                        className="object-cover"
+                                        sizes="50vw"
+                                        priority={true}
+                                    />
+                                )}
                             </div>
                         </div>
 
