@@ -90,6 +90,14 @@ export function PhotoGallery({ photos }) {
     photos.filter((_, i) => i % columns === colIndex)
   );
 
+  const enhanceSrc = (url) => {
+    if (!url) return url;
+    const joiner = url.includes('?') ? '&' : '?';
+    // Avoid duplicating params
+    if (/q=\d+/.test(url)) return url; // already transformed
+    return `${url}${joiner}q=85&auto=format`;
+  };
+
   if (!photos?.length) {
     return <div>No photos to display</div>;
   }
@@ -123,12 +131,15 @@ export function PhotoGallery({ photos }) {
                     onKeyDown={(e) => e.key === 'Enter' && openLightbox(actualIndex)}
                   >
                     <Image
-                      src={photo.src}
+                      src={enhanceSrc(photo.src)}
                       alt={photo.alt || `Photo ${actualIndex + 1}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={85}
+                      placeholder={photo.lqip ? 'blur' : undefined}
+                      blurDataURL={photo.lqip || undefined}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1536px) 33vw, 25vw"
                     />
                   </div>
                 );

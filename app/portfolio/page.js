@@ -49,8 +49,8 @@ export default async function PortfolioPage() {
                             return (
                                 <section key={id} id={id} className="scroll-mt-40">
                                     <header className="space-y-4">
-                                        <HeadingTag className="text-3xl font-montserrat font-extralight tracking-wide text-gray-900">{project.title}</HeadingTag>
-                                        <div className="w-80 h-px bg-gray-900" />
+                                        <HeadingTag className="text-2xl font-montserrat font-extralight tracking-wide text-gray-900">{project.title}</HeadingTag>
+                                        <div className="w-80 h-px bg-gray-900 max-w-[50%]" />
                                     </header>
                                     <div className="mt-10 space-y-12">
                                         {project.photos?.length > 0 && (
