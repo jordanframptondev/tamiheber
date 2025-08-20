@@ -1,6 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-// Updated portfolio schema: a list of projects. Each project has a title, photos, and videos.
 export default defineType({
   name: 'portfolio',
   title: 'Portfolio',

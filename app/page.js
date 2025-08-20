@@ -1,4 +1,5 @@
 import { FullScreenVideo } from "@/components/FullScreenVideo";
+import { getHomeHero } from "@/lib/cms-service";
 
 export const metadata = {
     title: 'Tami Heber',
@@ -8,5 +9,6 @@ export const metadata = {
 };
 
 export default async function Home() {
-    return <FullScreenVideo posterImage="/thumbnail.jpg"/>;
+    const { videoUrl, posterUrl } = await getHomeHero();
+    return <FullScreenVideo posterImage={posterUrl || "/thumbnail.jpg"} videoSrc={videoUrl || undefined} />;
 }

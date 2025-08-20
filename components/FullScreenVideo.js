@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 
-export function FullScreenVideo({ posterImage = null }) {
+export function FullScreenVideo({ posterImage = null, videoSrc = "/DeerCanyon720.mp4" }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [showControls, setShowControls] = useState(true);
@@ -151,6 +151,16 @@ export function FullScreenVideo({ posterImage = null }) {
     };
   }, []);
 
+  const inferMimeType = (url) => {
+    if (!url) return 'video/mp4';
+    const lowered = url.split('?')[0].toLowerCase();
+    if (lowered.endsWith('.webm')) return 'video/webm';
+    if (lowered.endsWith('.ogg') || lowered.endsWith('.ogv')) return 'video/ogg';
+    if (lowered.endsWith('.mov')) return 'video/quicktime';
+    return 'video/mp4';
+  };
+  const effectiveVideoSrc = videoSrc || '/DeerCanyon720.mp4';
+
   return (
     <div
       className="relative w-full h-dvh overflow-hidden bg-black"
@@ -181,7 +191,7 @@ export function FullScreenVideo({ posterImage = null }) {
         preload="auto"
         poster={posterImage} // Native poster attribute as fallback
       >
-        <source src="/DeerCanyon720.mp4" type="video/mp4" />
+        <source src={effectiveVideoSrc} type={inferMimeType(effectiveVideoSrc)} />
         Your browser does not support the video tag.
       </video>
 
