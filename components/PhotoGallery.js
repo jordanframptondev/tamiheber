@@ -102,11 +102,8 @@ export function PhotoGallery({ photos }) {
 
   return (
     <div className="min-h-dvh bg-white">
-      {/* Header spacing */}
-      <div className="h-16 lg:h-24 flex-shrink-0"></div>
-
       {/* Gallery Container */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto py-8">
         <div className="flex gap-4">
           {photosInColumns.map((columnPhotos, columnIndex) => (
             <div key={columnIndex} className="flex-1 flex flex-col gap-4">
