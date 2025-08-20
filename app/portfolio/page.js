@@ -23,64 +23,52 @@ function slugify(title = '') {
 export default async function PortfolioPage() {
     const projects = await getPortfolioProjects();
 
+    if (!projects || projects.length === 0) {
+        return (
+            <div className="min-h-dvh bg-gray-50">
+                <div className="h-20 lg:h-28 flex-shrink-0" />
+                <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24">
+                    <p className="text-gray-700">No portfolio projects found.</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
             <style>{fadeInKeyframes}</style>
-            <div className="min-h-dvh bg-white">
-                {/* Header spacing */}
-                <div className="h-16" />
-
-                {/* In-page navigation */}
-                {/*{projects?.length > 1 && (*/}
-                {/*  <nav aria-label="Project navigation" className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-black/10">*/}
-                {/*    <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex flex-wrap gap-3">*/}
-                {/*      {projects.map(p => {*/}
-                {/*        const id = slugify(p.title);*/}
-                {/*        return (*/}
-                {/*          <a*/}
-                {/*            key={id}*/}
-                {/*            href={`#${id}`}*/}
-                {/*            className="text-xs md:text-sm font-medium px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 transition-colors"*/}
-                {/*          >*/}
-                {/*            {p.title}*/}
-                {/*          </a>*/}
-                {/*        );*/}
-                {/*      })}*/}
-                {/*    </div>*/}
-                {/*  </nav>*/}
-                {/*)}*/}
-
-                {/* Projects */}
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-24 py-12">
-                    {(!projects || projects.length === 0) && (
-                        <p>No portfolio projects found.</p>
-                    )}
-                    {projects?.map(project => {
-                        const id = slugify(project.title);
-                        return (
-                            <section key={id} id={id} className="scroll-mt-28">
-                                <header className="flex items-center justify-between gap-4">
-                                    <h2 className="text-2xl">{project.title}</h2>
-                                    {/*<a href="#" className="text-sm text-black/60 hover:text-black" aria-label="Back to top">Top</a>*/}
-                                </header>
-
-                                {/* Photos */}
-                                {project.photos?.length > 0 && (
-                                  <div className="mb-8">
-                                    <PhotoGallery photos={project.photos} />
-                                  </div>
-                                )}
-
-                                {/* Videos */}
-                                {project.videos?.length > 0 && (
-                                  <div className="space-y-4">
-                                    <h3 className="text-xl font-medium">Video</h3>
-                                    <VideoGallery videos={project.videos} />
-                                  </div>
-                                )}
-                            </section>
-                        );
-                    })}
+            <div className="min-h-dvh bg-gray-50">
+                {/* Header spacing (kept higher as per previous adjustment) */}
+                <div className="h-20 lg:h-28 flex-shrink-0"></div>
+                <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 pb-24">
+                    {/* All project sections with uniform vertical rhythm */}
+                    <div className="space-y-40">
+                        {projects.map((project, index) => {
+                            const id = slugify(project.title);
+                            const HeadingTag = index === 0 ? 'h1' : 'h2';
+                            return (
+                                <section key={id} id={id} className="scroll-mt-40">
+                                    <header className="space-y-4">
+                                        <HeadingTag className="text-3xl font-montserrat font-extralight tracking-wide text-gray-900">{project.title}</HeadingTag>
+                                        <div className="w-36 h-px bg-gray-900" />
+                                    </header>
+                                    <div className="mt-10 space-y-12">
+                                        {project.photos?.length > 0 && (
+                                            <div>
+                                                <PhotoGallery photos={project.photos} />
+                                            </div>
+                                        )}
+                                        {project.videos?.length > 0 && (
+                                            <div className="space-y-4">
+                                                <h3 className="text-xl font-medium">Video</h3>
+                                                <VideoGallery videos={project.videos} />
+                                            </div>
+                                        )}
+                                    </div>
+                                </section>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </>

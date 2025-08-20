@@ -101,9 +101,9 @@ export function PhotoGallery({ photos }) {
   const selectedImage = selectedImageIndex !== null ? photos[selectedImageIndex] : null;
 
   return (
-    <div className="min-h-dvh bg-white">
+    <div className="bg-transparent">
       {/* Gallery Container */}
-      <div className="max-w-7xl mx-auto py-8">
+      <div className="max-w-7xl mx-auto">
         <div className="flex gap-4">
           {photosInColumns.map((columnPhotos, columnIndex) => (
             <div key={columnIndex} className="flex-1 flex flex-col gap-4">
