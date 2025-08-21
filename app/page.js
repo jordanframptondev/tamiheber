@@ -13,7 +13,7 @@ export default async function Home() {
     return (
         <div className="relative">
             <FullScreenVideo posterImage={posterUrl || "/thumbnail.jpg"} videoSrc={videoUrl || undefined}/>
-            <div className="block md:hidden pointer-events-none absolute left-1/2 -translate-x-1/2 top-[25vh] z-30 text-nowrap">
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center z-30">
                 <a
                     href="/portfolio"
                     className="pointer-events-auto inline-block border border-white/80 bg-black/50 text-white font-montserrat font-light tracking-[0.35em] uppercase text-xs md:text-sm px-8 py-4 hover:bg-black/60 hover:border-white focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-black transition-colors duration-300"
