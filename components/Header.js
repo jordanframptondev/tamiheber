@@ -49,9 +49,9 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className={`fixed top-0 left-0 right-0 z-50 ${headerBg} backdrop-blur-md border-b ${borderColor}`}>
                 <div className="max-w-6xl mx-auto px-8 lg:px-12">
-                    <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center justify-between h-20 md:h-16">
                         {/* Logo/Title */}
-                        <Link href="/" className={`${textColor} text-xl font-montserrat font-extralight tracking-widest uppercase`}>
+                        <Link href="/" className={`${textColor} text-xl font-montserrat font-light tracking-widest uppercase text-nowrap`}>
                             Tami Heber
                         </Link>
 
@@ -61,7 +61,7 @@ export function Header() {
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className={`${textColor} font-montserrat font-extralight text-sm tracking-wide uppercase relative group transition-all duration-500 ${hoverColor} ${
+                                    className={`${textColor} font-montserrat font-light text-sm tracking-wide uppercase relative group transition-all duration-500 ${hoverColor} ${
                                         pathname === item.path ? activeColor : ''
                                     }`}
                                 >

@@ -1,6 +1,10 @@
 .hamburger-icon {
     width: 35px;
-    height: 30px;
+    /* Adjustable variables */
+    --line-thickness: 2px;
+    --line-spacing: 6px; /* Decrease this to make lines closer */
+    /* Height = total thickness + spacing between lines */
+    height: calc(var(--line-thickness) * 3 + var(--line-spacing) * 2);
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -13,8 +17,7 @@
 }
 
 .hamburger-icon .line {
-    /* background-color: #000; */ /* Set with tailwind in component to match */
-    height: 1px;
+    height: var(--line-thickness);
     width: 100%;
     display: block;
     position: absolute;
@@ -22,20 +25,18 @@
     transition: all 0.3s ease;
 }
 
-.hamburger-icon .line1 {
-    top: 0;
-}
+/* Position lines using spacing variable */
+.hamburger-icon .line1 { top: 0; }
+.hamburger-icon .line2 { top: calc(var(--line-thickness) + var(--line-spacing)); }
+.hamburger-icon .line3 { top: calc((var(--line-thickness) + var(--line-spacing)) * 2); }
 
-.hamburger-icon .line2 {
-    top: 8px;
-}
-
+/* Open (X) state */
 .hamburger-icon.open .line1 {
-    transform: rotate(45deg);
-    top: 13px;
+    transform: translateY(calc(var(--line-thickness) + var(--line-spacing))) rotate(45deg);
 }
-
+.hamburger-icon.open .line3 {
+    transform: translateY(calc(-1 * (var(--line-thickness) + var(--line-spacing)))) rotate(-45deg);
+}
 .hamburger-icon.open .line2 {
-    transform: rotate(-45deg);
-    top: 13px;
+    opacity: 0;
 }

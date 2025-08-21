@@ -9,6 +9,18 @@ export const metadata = {
 };
 
 export default async function Home() {
-    const { videoUrl, posterUrl } = await getHomeHero();
-    return <FullScreenVideo posterImage={posterUrl || "/thumbnail.jpg"} videoSrc={videoUrl || undefined} />;
+    const {videoUrl, posterUrl} = await getHomeHero();
+    return (
+        <div className="relative">
+            <FullScreenVideo posterImage={posterUrl || "/thumbnail.jpg"} videoSrc={videoUrl || undefined}/>
+            <div className="block md:hidden pointer-events-none absolute left-1/2 -translate-x-1/2 top-[25vh] z-30 text-nowrap">
+                <a
+                    href="/portfolio"
+                    className="pointer-events-auto inline-block border border-white/80 bg-black/50 text-white font-montserrat font-light tracking-[0.35em] uppercase text-xs md:text-sm px-8 py-4 hover:bg-black/60 hover:border-white focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-black transition-colors duration-300"
+                >
+                    View Portfolio
+                </a>
+            </div>
+        </div>
+    );
 }
