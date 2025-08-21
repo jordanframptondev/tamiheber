@@ -37,7 +37,7 @@ export default async function Contact() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header spacing */}
-            <div className="h-16 lg:h-24 flex-shrink-0"></div>
+            <div className="h-20 lg:h-24 flex-shrink-0"></div>
 
             {/* Content area */}
             <div className="h-[calc(100dvh-4rem)] lg:h-[calc(100dvh-6rem)] flex mt-8">

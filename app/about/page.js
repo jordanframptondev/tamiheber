@@ -16,7 +16,7 @@ export default async function About() {
     return (
         <div className="min-h-dvh bg-gray-50">
             {/* Header spacing */}
-            <div className="h-16 lg:h-24 flex-shrink-0"></div>
+            <div className="h-20 lg:h-24 flex-shrink-0"></div>
 
             {/* Content area */}
             <div className="flex mt-8">

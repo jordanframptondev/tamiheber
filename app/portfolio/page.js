@@ -39,7 +39,7 @@ export default async function PortfolioPage() {
             <style>{fadeInKeyframes}</style>
             <div className="min-h-dvh bg-gray-50">
                 {/* Header spacing (kept higher as per previous adjustment) */}
-                <div className="h-20 lg:h-28 flex-shrink-0"></div>
+                <div className="h-28 lg:h-32 flex-shrink-0"></div>
                 <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 pb-24">
                     {/* All project sections with uniform vertical rhythm */}
                     <div className="space-y-40">
